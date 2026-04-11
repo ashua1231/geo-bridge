@@ -1,0 +1,54 @@
+{
+  "payload": {
+    "export": "cart-delivery-options-discounts-generate-run",
+    "target": "cart.delivery-options.discounts.generate.run",
+    "input": {
+      "discount": {
+        "discountClasses": ["SHIPPING"]
+      },
+      "cart": {
+        "attribute": {
+          "key": "geo_country",
+          "value": "US"
+        },
+        "lines": [
+          {
+            "id": "gid://shopify/CartLine/0",
+            "quantity": 5
+          }
+        ],
+        "deliveryGroups": [
+          {
+            "id": "gid://shopify/CartDeliveryGroup/1"
+          }
+        ]
+      }
+    },
+    "output": {
+      "operations": [
+        {
+          "deliveryDiscountsAdd": {
+            "candidates": [
+              {
+                "message": "US 5+ items: 10% off",
+                "targets": [
+                  {
+                    "deliveryGroup": {
+                      "id": "gid://shopify/CartDeliveryGroup/1"
+                    }
+                  }
+                ],
+                "value": {
+                  "percentage": {
+                    "value": 10.0
+                  }
+                }
+              }
+            ],
+            "selectionStrategy": "ALL"
+          }
+        }
+      ]
+    }
+  }
+}

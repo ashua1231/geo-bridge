@@ -1,0 +1,71 @@
+# Create a segment
+mutation CreateSegment($name: String!, $query: String!) {
+  segmentCreate(name: $name, query: $query) {
+    segment {
+      id
+      name
+      query
+    }
+    userErrors {
+      field
+      message
+    }
+  }
+}
+
+# List existing segments
+query ListSegments($first: Int!) {
+  segments(first: $first) {
+    edges {
+      node {
+        id
+        name
+        default
+        query
+      }
+    }
+  }
+}
+
+# Fetch a single segment
+query GetSegment($id: ID!) {
+  segment(id: $id) {
+    id
+    name
+    query
+  }
+}
+
+# Preview customers in a segment query before saving it
+query PreviewSegmentMembers($query: String!, $first: Int!) {
+  customerSegmentMembers(query: $query, first: $first) {
+    edges {
+      node {
+        id
+        firstName
+        lastName
+        emailAddress {
+          emailAddress
+        }
+      }
+    }
+  }
+}
+
+# Example variables for a domestic segment
+# {
+#   "name": "Domestic Customers",
+#   "query": "customer_countries CONTAINS 'HOME_COUNTRY_CODE'"
+# }
+
+# Example variables for an international segment
+# {
+#   "name": "International Customers",
+#   "query": "customer_countries NOT CONTAINS 'HOME_COUNTRY_CODE'"
+# }
+
+# Example variables for an international repeat-buyer segment
+# {
+#   "name": "International Repeat Customers",
+#   "query": "customer_countries NOT CONTAINS 'HOME_COUNTRY_CODE' AND number_of_orders >= 1"
+# }

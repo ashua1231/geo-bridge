@@ -1,0 +1,15 @@
+query RunInput {
+  cart {
+    attribute(key: "geo_country") {
+      key
+      value
+    }
+    lines {
+      id
+      quantity
+    }
+  }
+  discount {
+    discountClasses
+  }
+}

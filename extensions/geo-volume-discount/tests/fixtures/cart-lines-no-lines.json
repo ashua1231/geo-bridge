@@ -1,0 +1,21 @@
+{
+  "payload": {
+    "export": "cart-lines-discounts-generate-run",
+    "target": "cart.lines.discounts.generate.run",
+    "input": {
+      "cart": {
+        "attribute": {
+          "key": "geo_country",
+          "value": "US"
+        },
+        "lines": []
+      },
+      "discount": {
+        "discountClasses": ["ORDER", "PRODUCT"]
+      }
+    },
+    "output": {
+      "operations": []
+    }
+  }
+}

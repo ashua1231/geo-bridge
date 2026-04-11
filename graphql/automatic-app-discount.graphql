@@ -1,0 +1,62 @@
+# Create a real-time automatic app discount backed by the deployed function.
+#
+# This discount should remain available to all buyers because the actual
+# eligibility is enforced by the Shopify Function using:
+# - cart attribute `geo_type`
+# - cart quantity tiers
+#
+# The function handle below matches:
+# extensions/geo-volume-discount/shopify.extension.toml
+
+mutation CreateAutomaticGeoDiscount($automaticAppDiscount: DiscountAutomaticAppInput!) {
+  discountAutomaticAppCreate(automaticAppDiscount: $automaticAppDiscount) {
+    automaticAppDiscount {
+      discountId
+      title
+      status
+      appDiscountType {
+        functionHandle
+      }
+    }
+    userErrors {
+      field
+      message
+    }
+  }
+}
+
+# Example variables
+# {
+#   "automaticAppDiscount": {
+#     "title": "International Geo Volume Discount",
+#     "functionHandle": "geo-volume-discount",
+#     "startsAt": "2026-04-06T00:00:00Z",
+#     "combinesWith": {
+#       "orderDiscounts": false,
+#       "productDiscounts": false,
+#       "shippingDiscounts": false
+#     }
+#   }
+# }
+
+# Optional query to inspect existing automatic app discounts
+query ListAutomaticAppDiscounts($first: Int!) {
+  automaticDiscountNodes(first: $first) {
+    edges {
+      node {
+        id
+        automaticDiscount {
+          __typename
+          ... on DiscountAutomaticApp {
+            title
+            status
+            discountId
+            appDiscountType {
+              functionHandle
+            }
+          }
+        }
+      }
+    }
+  }
+}

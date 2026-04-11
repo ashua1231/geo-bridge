@@ -1,0 +1,27 @@
+{
+  "payload": {
+    "export": "cart-delivery-options-discounts-generate-run",
+    "target": "cart.delivery-options.discounts.generate.run",
+    "input": {
+      "cart": {
+        "attribute": {
+          "key": "geo_country",
+          "value": "US"
+        },
+        "lines": [
+          {
+            "id": "gid://shopify/CartLine/0",
+            "quantity": 2
+          }
+        ],
+        "deliveryGroups": []
+      },
+      "discount": {
+        "discountClasses": ["SHIPPING"]
+      }
+    },
+    "output": {
+      "operations": []
+    }
+  }
+}

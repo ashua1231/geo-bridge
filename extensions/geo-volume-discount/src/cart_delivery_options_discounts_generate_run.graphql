@@ -1,0 +1,18 @@
+query DeliveryInput {
+  cart {
+    attribute(key: "geo_country") {
+      key
+      value
+    }
+    lines {
+      id
+      quantity
+    }
+    deliveryGroups {
+      id
+    }
+  }
+  discount {
+    discountClasses
+  }
+}
