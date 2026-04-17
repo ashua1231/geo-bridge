@@ -62,7 +62,7 @@ async function createGeoDiscount(shop, accessToken) {
           userErrors { field message }
         }
       }`,
-      variables: { input: { title: "Geo Volume Discount", functionId: fn.id, startsAt: new Date().toISOString(), combinesWith: { orderDiscounts: false, productDiscounts: false, shippingDiscounts: false } } },
+      variables: { input: { title: "Geo Volume Discount", functionId: fn.id, discountClasses: ["ORDER", "SHIPPING"], startsAt: new Date().toISOString(), combinesWith: { orderDiscounts: false, productDiscounts: false, shippingDiscounts: false } } },
     }),
   });
   const discData = await discRes.json();

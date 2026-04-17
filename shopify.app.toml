@@ -2,7 +2,7 @@
 
 client_id = "8dcdf86c92831bb45f4066393a81fcdf"
 name = "geo-bridge"
-application_url = "https://www.9shineslabs.com"
+application_url = "https://geo-bridge.onrender.com"
 embedded = false
 
 [build]
@@ -18,4 +18,4 @@ optional_scopes = [ ]
 use_legacy_install_flow = false
 
 [auth]
-redirect_urls = [ ]
+redirect_urls = [ "https://geo-bridge.onrender.com/auth/callback" ]
